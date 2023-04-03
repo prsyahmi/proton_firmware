@@ -1,8 +1,24 @@
-# Proton IHU APK's Sideload
+# Proton IHU APK Sideload Status
 
-This repo doesn't show method on how to install APKs to your IHU. But only serve as a place to track status of it.
+This repo doesn't show method on how to install APKs to your IHU. But only serve as a place to track status of it and others technical information.
 
 Some car like EXORA doesn't have direct link between car system and IHU and it should be safe to meddle with it. However, for other such as X70 you must exercise caution and I recommend against it.
+
+# Architecture
+The first firmware (GKUI) was developed by ECARX and its development is continued by ACOTech with the release of GKUI19 and ATLAS OS.
+
+Some car will have IHU and MCU comes together while other will have extra TBOX that connects all of the car hardware together. This gave the car ability to stay connected when not using it.
+
+Since I haven't dissect the hardware, the next statement is only speculation:
+The MCU add another layer of interface between IHU and the user/hardware for example the speaker connects to MCU rather than IHU directly.
+
+When the device boot, it will send a series of command to MCU to initialize it. We can observe sometimes that the car will have its speaker silent not producing sound even we set it to max in IHU until restarted. This is due to the init code is not properly sent to MCU or interrupted or if MCU is not ready to accept command. For example, when cranking car engine one of the IHU/MCU initialization may be interrupted.
+
+# Firmware & Status
+
+The firmware is usually sent to user via OTA and optionally Proton can update the firmware at SC. With OTA, some of the firmware will arrive to the user in its full form while some will arrive in diff mode.
+
+When hacking the IHU, I strongly discourage to write to `/system` partition directly as this may refuse future update for diff mode or if the updates was forced, it may corrupt the filesystem.
 
 ## EXORA / PERSONA / IRIZ - GKUI
 |Model|Firmware|Method|Comment|
