@@ -1,0 +1,10 @@
+#!/system/bin/sh
+
+echo clear_display
+echo progress 0.5
+
+pm install /storage/udisk/es.apk
+pm install /storage/udiskl/es.apk
+pm install /storage/udisk2/es.apk
+
+echo progress 1.0
