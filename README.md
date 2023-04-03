@@ -2,7 +2,7 @@
 
 This repo doesn't show method on how to install APKs to your IHU. But only serve as a place to track status of it.
 
-Some car like EXORA doesn't have direct link between car system and IHU and it should be safe to meddle with it. However, for other such as X70 you must exercise caution and I don't recommend to sideload it.
+Some car like EXORA doesn't have direct link between car system and IHU and it should be safe to meddle with it. However, for other such as X70 you must exercise caution and I recommend against it.
 
 ## EXORA / PERSONA / IRIZ - GKUI
 |Model|Firmware|Method|Comment|
@@ -36,3 +36,8 @@ Some car like EXORA doesn't have direct link between car system and IHU and it s
 | | ATLAS | SW0SXRA0929H5170.00598 | | 
 |H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v1) | Init Script | Able to install APKs with simple file copy, but cannot invoke through installer due to APK must be signed and coming from AStore
 |H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v2) | Downgrade | Same version number, but ACOTech silently push the updates with removal of init script backdoor
+
+## X90
+|Model|Firmware|Method|Comment|
+|-----|--------|------|-------|
+|Not|released|yet| |
