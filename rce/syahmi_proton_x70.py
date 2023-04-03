@@ -10,10 +10,6 @@ from qiling import Qiling
 from qiling.const import QL_VERBOSE, QL_INTERCEPT
 from qiling.os.const import INT, STRING
 from qiling.os.disk import QlDisk
-import os
-fd = os.open("system/bin/ls", os.O_RDONLY, 0o666)
-s = os.fstat(fd)
-print(f"{s}")
 
 def ql_syscall_sigaltstack(ql: Qiling, addr, args):
     return 0
@@ -23,14 +19,6 @@ def ql_syscall_sigaction(ql: Qiling, addr, args):
 
 def ql_syscall_sigsuspend(ql: Qiling, addr, args):
     return 0
-
-def my_open(ql, address, size):
-    # Get the file descriptor associated with the opened file
-    fd = ql.reg.read(ql.loader.registers['arg'][0])
-    # Get the filename associated with the file descriptor
-    filename = ql.os.fd2name(fd)
-    # Print the filename to the console
-    print("Opened file:", filename)
 
 def my_androidprint2(ql: Qiling, *args):
     # Get the log message parameters
@@ -56,7 +44,6 @@ if __name__ == "__main__":
     # )
     ql = Qiling(
         ["system/bin/minirecovery", "5install", "/attack-finish/update/update.zip"],
-        #["system/bin/minirecovery", "80"],
         ".",
         multithread=True,
         #verbose=QL_VERBOSE.DEBUG
@@ -85,7 +72,6 @@ if __name__ == "__main__":
     #ql.os.set_syscall(0x43, ql_syscall_sigaction)
     #ql.os.set_syscall(72, ql_syscall_sigsuspend)
 
-    #ql.os.set_api("open", my_open)
     #ql.os.set_api('__android_log_buf_print', my_androidprint2, QL_INTERCEPT.ENTER)
 
     ql.mem.map(0x0, 0x1000, 7)
