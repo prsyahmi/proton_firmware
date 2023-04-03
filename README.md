@@ -20,7 +20,7 @@ The firmware is usually sent to user via OTA and optionally Proton can update th
 
 When hacking the IHU, I strongly discourage to write to `/system` partition directly as this may refuse future update for diff mode or if the updates was forced, it may corrupt the filesystem.
 
-## EXORA / PERSONA / IRIZ - GKUI
+## [EXORA](EXORA) / PERSONA / IRIZ - GKUI
 |Model|Firmware|Method|Comment|
 |-----|--------|------|-------|
 |EXORA | GKUI (all version) V3.1.3E V3.1.5E V3.2.6E | Loophole | Use exec on Factory Settings
@@ -32,7 +32,7 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |IRIZ | ATLAS | Loophole | Hole from one of the app
 |PERSONA MC2 | ATLAS SWPERSO1213H1803 | Loophole | Hole from one of the app 
 
-## X70
+## X70 - [GKUI](X70_GKUI) / [ATLAS](X70_ATLAS)
 |Model|Firmware|Method|Comment|
 |-----|--------|------|-------|
 |X70 | GKUI (CBU/Older unknown version) | Engineer Mode | Enter engineer mode via dialer code and select install APK
@@ -40,7 +40,7 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |X70 | ATLAS SWNL3RB0814H1091 | Simple Flags | |
 |X70 | ATLAS SWNL3R... | Simple Flags | |
 
-## X50 (H = Premium/Flagship, L = Executive/Standard)
+## X50 (H = Premium/Flagship, L = Executive/Standard) [GKUI](X50_GKUI) / [ATLAS](X50_ATLAS)
 |HW|OS|Firmware|Method|Comment|
 |--|--|--------|------|-------|
 |H090 | GKUI19 | SW0SXRA0911H5063.00374 | | 
