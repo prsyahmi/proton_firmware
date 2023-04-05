@@ -38,33 +38,43 @@ void traverseDir(char* dirPath, char* apks[], int* count) {
     closedir(dir);
 }
 
-int main() {
+int main(int argc, char** argv) {
     char* apks[1000];
     int count = 0;
+
+    // 1 = version
+    // 2 = fd
+    // 3 = package name
+    // 4 = retry
+    int fd = atoi(argv[2]);
+    FILE* f = fdopen(fd, "wb");
+
+    setlinebuf(f);
 
     traverseDir("/storage/udisk/apk", apks, &count);
     traverseDir("/storage/udisk1/apk", apks, &count);
     traverseDir("/storage/udisk2/apk", apks, &count);
 
-    printf("clear_display\n");
+    fprintf(f, "clear_display\n");
 
-    printf("ui_print Total APKs %d\n", count);
+    fprintf(f, "ui_print Installation will say 'failed' after done\n");
+    fprintf(f, "ui_print Total APKs: %d\n", count);
 
     system("settings put global install_non_market_apps 1");
 
     for (int i = 0; i < count; i++) {
-        printf("ui_print installing %s\n", apks[i]);
+        fprintf(f, "ui_print installing %s\n", apks[i]);
         installFile(apks[i]);
         free(apks[i]);
 
         float progress = 1.0f / count;
-        printf("progress %.2f \n0 \n", 1.0f / count);
+        fprintf(f, "progress %.2f 0\n", 1.0f / count);
 
         // We don't want to restart, set upper limit to 90%
         //printf("progress %.2f\n", progress > 0.9f ? 0.9f : progress);
     }
 
-    printf("ui_print Done\n");
+    fprintf(f, "ui_print Done\n");
 
     // Fail intentionally to avoid restart
     return 1;
