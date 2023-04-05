@@ -50,6 +50,8 @@ int main() {
 
     printf("ui_print Total APKs %d\n", count);
 
+    system("settings put global install_non_market_apps 1");
+
     for (int i = 0; i < count; i++) {
         printf("ui_print installing %s\n", apks[i]);
         installFile(apks[i]);
