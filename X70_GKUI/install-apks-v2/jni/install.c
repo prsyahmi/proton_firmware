@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
+#include <unistd.h>
+
+struct TParam {
+    char* apks[1000];
+    char* custom_script;
+    int apk_count;
+    int reboot_after_done;
+};
 
 void installFile(char* path) {
     char command[256];
@@ -9,28 +17,39 @@ void installFile(char* path) {
     system(command);
 }
 
-void traverseDir(char* dirPath, char* apks[], int* count) {
+void traverseDir(char* dirPath, struct TParam* param, int is_root) {
     DIR* dir;
     struct dirent* entry;
+    char tmp[256];
 
     if ((dir = opendir(dirPath)) == NULL) {
         return;
     }
 
+    if (is_root) {
+        sprintf(tmp, "%s/_custom.sh", dirPath);
+        if (access(tmp, R_OK) == 0) {
+            param->custom_script = strdup(tmp);
+        }
+
+        sprintf(tmp, "%s/_reboot_after_done.txt", dirPath);
+        if (access(tmp, F_OK) == 0) {
+            param->reboot_after_done = 1;
+        }
+    }
+
     while ((entry = readdir(dir)) != NULL) {
-        // Ignore directories ".", ".." and anything start with "."
-        printf("%s\n", entry->d_name);
+        char* fileName = entry->d_name;
+
         if (entry->d_type == DT_DIR && entry->d_name[0] != '.') {
-            char subDirPath[256];
-            sprintf(subDirPath, "%s/%s", dirPath, entry->d_name);
-            traverseDir(subDirPath, apks, count);
+            // Ignore directories ".", ".." and anything start with "."
+            sprintf(tmp, "%s/%s", dirPath, entry->d_name);
+            traverseDir(tmp, param, 0);
         } else if (entry->d_type == DT_REG) {
-            char* fileName = entry->d_name;
             size_t len = strlen(fileName);
             if (len > 4 && strcmp(&fileName[len-4], ".apk") == 0) {
-                char filePath[256];
-                sprintf(filePath, "%s/%s", dirPath, fileName);
-                apks[(*count)++] = strdup(filePath);
+                sprintf(tmp, "%s/%s", dirPath, fileName);
+                param->apks[param->apk_count++] = strdup(tmp);
             }
         }
     }
@@ -39,43 +58,47 @@ void traverseDir(char* dirPath, char* apks[], int* count) {
 }
 
 int main(int argc, char** argv) {
-    char* apks[1000];
-    int count = 0;
+    struct TParam param;
+    int fd;
+    FILE* f;
 
     // 1 = version
     // 2 = fd
     // 3 = package name
     // 4 = retry
-    int fd = atoi(argv[2]);
-    FILE* f = fdopen(fd, "wb");
-
+    fd = atoi(argv[2]);
+    f = fdopen(fd, "wb");
     setlinebuf(f);
+    
+    memset(&param, 0, sizeof(struct TParam));
 
-    traverseDir("/storage/udisk/apk", apks, &count);
-    traverseDir("/storage/udisk1/apk", apks, &count);
-    traverseDir("/storage/udisk2/apk", apks, &count);
+    traverseDir("/storage/udisk/apk", &param, 1);
+    traverseDir("/storage/udisk1/apk", &param, 1);
+    traverseDir("/storage/udisk2/apk", &param, 1);
 
     fprintf(f, "clear_display\n");
 
     fprintf(f, "ui_print Installation will say 'failed' after done\n");
-    fprintf(f, "ui_print Total APKs: %d\n", count);
+    fprintf(f, "ui_print Total APKs: %d\n", param.apk_count);
 
     system("settings put global install_non_market_apps 1");
 
-    for (int i = 0; i < count; i++) {
-        fprintf(f, "ui_print installing %s\n", apks[i]);
-        installFile(apks[i]);
-        free(apks[i]);
+    for (int i = 0; i < param.apk_count; i++) {
+        fprintf(f, "ui_print installing %s\n", param.apks[i]);
+        installFile(param.apks[i]);
+        free(param.apks[i]);
 
-        float progress = 1.0f / count;
-        fprintf(f, "progress %.2f 0\n", 1.0f / count);
+        float progress = 1.0f / (param.apk_count + (param.custom_script ? 1 : 0));
+        fprintf(f, "progress %.2f 0\n", progress);
+    }
 
-        // We don't want to restart, set upper limit to 90%
-        //printf("progress %.2f\n", progress > 0.9f ? 0.9f : progress);
+    if (param.custom_script) {
+        fprintf(f, "ui_print Executing custom script\n");
+        system(param.custom_script);
+        free(param.custom_script);
     }
 
     fprintf(f, "ui_print Done\n");
 
-    // Fail intentionally to avoid restart
-    return 1;
+    return param.reboot_after_done ? 0 : 1;
 }
