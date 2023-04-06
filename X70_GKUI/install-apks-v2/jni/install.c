@@ -83,12 +83,12 @@ int main(int argc, char** argv) {
 
     system("settings put global install_non_market_apps 1");
 
+    float progress = 1.0f / (param.apk_count + (param.custom_script ? 1 : 0));
     for (int i = 0; i < param.apk_count; i++) {
         fprintf(f, "ui_print installing %s\n", param.apks[i]);
         installFile(param.apks[i]);
         free(param.apks[i]);
 
-        float progress = 1.0f / (param.apk_count + (param.custom_script ? 1 : 0));
         fprintf(f, "progress %.2f 0\n", progress);
     }
 
@@ -96,6 +96,8 @@ int main(int argc, char** argv) {
         fprintf(f, "ui_print Executing custom script\n");
         system(param.custom_script);
         free(param.custom_script);
+
+        fprintf(f, "progress %.2f 0\n", progress);
     }
 
     fprintf(f, "ui_print Done\n");
