@@ -15,10 +15,10 @@ This can be obtained in `/system/build.prop`
 
 | Content | MD5 |
 |---------|-----|
-|`echo HELLO WORLD!`|be25a89009d413ae073cff80a4fbd9be|
-|`be25a89009d413ae073cff80a4fbd9besx11ra_ds_2wk`|6fcdbfad9eff73332903df03576a727f|
-| `6fcdbfad9eff73332903df03576a727fSuper Savior Hero` | 68f054a674cdc7fa937bf1cfc9438608
-|Final filename should be:|`68f054a674cdc7fa937bf1cfc9438608.sh` |
+|`echo HELLO WORLD!`|d86fba055f6b3cbac41025c6c119158b|
+|`d86fba055f6b3cbac41025c6c119158bsx11ra_ds_2wk`|5033cb5a285164497da9bf5483f8cb6d|
+| `5033cb5a285164497da9bf5483f8cb6dSuper Savior Hero` | be25a89009d413ae073cff80a4fbd9be
+|Final filename should be:|`be25a89009d413ae073cff80a4fbd9be.sh` |
 
 #### ro.build.product:
 - `sx11ra_ds_2wk` = .617 / .618
