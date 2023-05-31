@@ -21,39 +21,39 @@ The firmware is usually sent to user via OTA and optionally Proton can update th
 When hacking the IHU, I strongly discourage to write to `/system` partition directly as this may refuse future update for diff mode or if the updates was forced, it may corrupt the filesystem.
 
 ## [EXORA](EXORA) / PERSONA / IRIZ - GKUI
-|Model|Firmware|Method|Comment|
-|-----|--------|------|-------|
-|EXORA | GKUI (all version) V3.1.3E V3.1.5E V3.2.6E | Loophole | Use exec on Factory Settings
-|PERSONA/IRIZ | GKUI (all version) V3.1.5E | Loophole | Use exec on Factory Settings
+|Model|Firmware|Method|Root Privilege|Comment|
+|-----|--------|------|-------|-------|
+|EXORA | GKUI (all version) V3.1.3E V3.1.5E V3.2.6E | Loophole | Available | Use exec on Factory Settings
+|PERSONA/IRIZ | GKUI (all version) V3.1.5E | Loophole | Available | Use exec on Factory Settings
 
 ## PERSONA MC2 / IRIZ MC3 - ATLAS
-|Model|Firmware|Method|Comment|
-|-----|--------|------|-------|
-|IRIZ | ATLAS | Loophole | Hole from one of the app
-|PERSONA MC2 | ATLAS SWPERSO1213H1803 | Loophole | Hole from one of the app 
+|Model|Firmware|Method|Root Privilege|Comment|
+|-----|--------|------|-------|-------|
+|IRIZ | ATLAS | Loophole | ? | Hole from one of the app
+|PERSONA MC2 | ATLAS SWPERSO1213H1803 | Loophole | ? | Hole from one of the app 
 
 ## X70 - [GKUI](X70_GKUI) / [ATLAS](X70_ATLAS)
-|Model|Firmware|Method|Comment|
-|-----|--------|------|-------|
-|X70 | GKUI (CBU/Older unknown version) | Engineer Mode | Enter engineer mode via dialer code and select install APK
-|X70 | GKUI V4.0.3(IC4) and below | Exploit | Crafting special file
-|X70 | ATLAS SWNL3RB0814H1091 | Simple Flags | |
-|X70 | ATLAS SWNL3R... | Simple Flags | |
+|Model|Firmware|Method|Root Privilege|Comment|
+|-----|--------|------|-------|-------|
+|X70 | GKUI (CBU/Older unknown version) | Engineer Mode | ? | Enter engineer mode via dialer code and select install APK
+|X70 | GKUI V4.0.3(IC4) and below | Exploit | Available | Crafting special file
+|X70 | ATLAS SWNL3RB0814H1091 | Simple Flags | ? | |
+|X70 | ATLAS SWNL3R... | Simple Flags | ? | |
 
 ## X50 (H = Premium/Flagship, L = Executive/Standard) [GKUI](X50_GKUI) / [ATLAS](X50_ATLAS)
-|HW|OS|Firmware|Method|Comment|
-|--|--|--------|------|-------|
+|HW|OS|Firmware|Method|Root Privilege|Comment|
+|--|--|--------|------|-------|-------|
 |H090 | GKUI19 | SW0SXRA0911H5063.00374 | | 
-|H090 | GKUI19 | SW0SXRA1201H5064.00379 | Init Script | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
-|H200 | GKUI19 | SW0SXRA0121H5167.00411 | Init Script | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
-|H200 | GKUI19 | SW0SXRA0121L5167.00412 | Init Script | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
-|H090/H200 | ATLAS | SW0SXRA0616H5170.00581 | | 
-|H090/H200 | ATLAS | SW0SXRA0616L5170.00582 | | 
-| | ATLAS | SW0SXRA0929H5170.00598 | | 
-|H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v1) | Init Script | Able to install APKs with simple file copy, but cannot invoke through installer due to APK installer protection in place
-|H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v2) | Downgrade | Same version number, but ACOTech silently push the updates with removal of init script backdoor
+|H090 | GKUI19 | SW0SXRA1201H5064.00379 | Init Script | Available | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
+|H200 | GKUI19 | SW0SXRA0121H5167.00411 | Init Script | Available | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
+|H200 | GKUI19 | SW0SXRA0121L5167.00412 | Init Script | Available | USB\b832bc61472727635baffcf25dd28e9f239273e2\...sh
+|H090/H200 | ATLAS | SW0SXRA0616H5170.00581 | | | 
+|H090/H200 | ATLAS | SW0SXRA0616L5170.00582 | | | 
+| | ATLAS | SW0SXRA0929H5170.00598 | | | 
+|H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v1) | Init Script | Available | Able to install APKs with simple file copy, but cannot invoke through installer due to APK installer protection in place
+|H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v2) | Downgrade | ? | Same version number, but ACOTech silently push the updates with removal of init script backdoor
 
 ## X90
-|Model|Firmware|Method|Comment|
-|-----|--------|------|-------|
-|Not|released|yet| |
+|Model|Firmware|Method|Root Privilege|Comment|
+|-----|--------|------|-------|-------|
+|Not|released|yet| | |
