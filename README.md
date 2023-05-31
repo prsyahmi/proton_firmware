@@ -55,9 +55,9 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v2) | Downgrade | ? | Same version number, but ACOTech silently push the updates with removal of init script backdoor
 
 ## X90
-|Model|Firmware|Method|Root Privilege|Comment|
-|-----|--------|------|-------|-------|
-|Not|released|yet| | |
+|HW|SW|FW|Method|Root Privilege|Comment|
+|-----|--------|------|-------|-------|-------|
+|HW0VX110506H0101|SWVX11R0224H8CWH.00553|IHU523P-00-CWH| | | |
 
 # Group
 [Click here](GROUP)
