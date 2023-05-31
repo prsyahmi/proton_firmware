@@ -38,7 +38,8 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |X70 | GKUI (CBU/Older unknown version) | Engineer Mode | ? | Enter engineer mode via dialer code and select install APK
 |X70 | GKUI V4.0.3(IC4) and below | Exploit | Available | Crafting special file
 |X70 | ATLAS SWNL3RB0814H1091 | Simple Flags | ? | |
-|X70 | ATLAS SWNL3R... | Simple Flags | ? | |
+|X70 | ATLAS SWNL3RB1018H1735.00153 | Simple Flags | ? | |
+|X70 | ATLAS SWNL3RB0406H11750.00228 | Downgrade | ? | |
 
 ## X50 (H = Premium/Flagship, L = Executive/Standard) [GKUI](X50_GKUI) / [ATLAS](X50_ATLAS)
 |HW|OS|Firmware|Method|Root Privilege|Comment|
