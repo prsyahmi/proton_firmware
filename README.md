@@ -54,7 +54,7 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 | | ATLAS | SW0SXRA0929H5170.00598 | | | 
 |H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v1) | Init Script | Available | Able to install APKs with simple file copy, but cannot invoke through installer due to APK installer protection in place
 |H090/H200 | ATLAS | SW0SXRA1124H5170.00617 SW0SXRA1124L5170.00618 (v2) | Downgrade | ? | Same version number, but ACOTech silently push the updates with removal of init script backdoor
-|H090/H200 | ATLAS | SW0SXRA0413H5170.00644 | Downgrade | ? | 
+|H090/H200 | ATLAS | SW0SXRA0413H5170.00644 SW0SXRA0413L5170.00645 | Downgrade | ? | 
 
 ## X90
 |HW|SW|FW|Method|Root Privilege|Comment|
