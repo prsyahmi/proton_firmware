@@ -60,6 +60,7 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |HW|SW|FW|Method|Root Privilege|Comment|
 |-----|--------|------|-------|-------|-------|
 |HW0VX110506H0101|SWVX11R0224H8CWH.00553|IHU523P-00-CWH| | | |
+||SWVX11R0912H8DJH.00638|| | | |
 
 # Group
 [Click here](GROUP)
