@@ -61,6 +61,8 @@ When hacking the IHU, I strongly discourage to write to `/system` partition dire
 |-----|--------|------|-------|-------|-------|
 |HW0VX110506H0101|SWVX11R0224H8CWH.00553|IHU523P-00-CWH| | | |
 ||SWVX11R0912H8DJH.00638|| | | |
+||XXX.00640|| :D | Possibly | X90 Has strong APK install protection |
+||XXX.00647|| :D | Possibly | |
 
 # Group
 [Click here](GROUP)
